@@ -22,6 +22,22 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 
+/**
+ * * Refactor to add function to the code for fetching the employee hour
+ * @param {if 1  --> Part time , 2 --> Full time} employeeTypeCheck 
+ */
+function GetEmployeeHour(employeeTypeCheck)
+{
+    switch(employeeTypeCheck)
+    {
+    case IS_PART_TIME:
+        return PART_TIME_HOURS;
+    case IS_FULL_TIME:
+        return FULL_TIME_HOURS;
+    default:
+        return 0;
+    }
+}
 let employeeHour = 0;
 /**
  * * Random number generates a real number between 0 and 1(exclusive)
@@ -29,18 +45,7 @@ let employeeHour = 0;
  * Then allocating the defined data of employee hourto the employee hour variable
  * In end calculating the total daily wage
  */
-employeeCheck = Math.floor((Math.random()*10) % 3);
-switch(employeeCheck)
-{
-    case IS_PART_TIME:
-        employeeHour = PART_TIME_HOURS;
-        break;
-    case IS_FULL_TIME:
-        employeeHour = FULL_TIME_HOURS;
-        break;
-    default:
-        employeeHour = 0;
-        break;
-}
+let employeeTypeCheck = Math.floor((Math.random()*10) % 3);
+employeeHour = GetEmployeeHour(employeeTypeCheck);
 let employeeWage = employeeHour * WAGE_PER_HOUR;
 console.log("Employee Wage :" + employeeWage);
