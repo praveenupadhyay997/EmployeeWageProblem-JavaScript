@@ -21,6 +21,8 @@ const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
+/// Constant indicating number of working days in a month
+const NUM_OF_WORKING_DAYS = 20;
 
 /**
  * * Refactor to add function to the code for fetching the employee hour
@@ -45,7 +47,10 @@ let employeeHour = 0;
  * Then allocating the defined data of employee hourto the employee hour variable
  * In end calculating the total daily wage
  */
-let employeeTypeCheck = Math.floor((Math.random()*10) % 3);
-employeeHour = GetEmployeeHour(employeeTypeCheck);
+for(let day =0; day < NUM_OF_WORKING_DAYS; day++)
+{
+    let employeeTypeCheck = Math.floor((Math.random()*10) % 3);
+    employeeHour += GetEmployeeHour(employeeTypeCheck);
+}
 let employeeWage = employeeHour * WAGE_PER_HOUR;
 console.log("Employee Wage :" + employeeWage);
